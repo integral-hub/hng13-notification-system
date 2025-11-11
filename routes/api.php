@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EmailController;
 // Test commit from STAN — setting up email-service branch
 
 /*
@@ -37,4 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
             'user' => $request->user()
         ]);
     });
+
+    // EMAILSERVICE TEST //
+
+    Route::post('/send-email', [EmailController::class, 'sendEmail']);
 });

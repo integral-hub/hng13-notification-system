@@ -1,0 +1,1 @@
+POST http://hng13-notification-system.test/api/send-email
