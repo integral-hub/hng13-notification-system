@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EmailController;
+// Test commit from STAN — setting up email-service branch
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +21,14 @@ use App\Http\Controllers\Auth\LoginController;
 Route::prefix('auth')->group(function () {
     Route::post('/login', LoginController::class)->name('login'); // /api/auth/login
 });
- 
-Route::post('/users', [UserController::class, 'store']);  
+
+Route::post('/users', [UserController::class, 'store']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'all']);        
-        Route::get('{user}', [UserController::class, 'show']); 
+        Route::get('/', [UserController::class, 'all']);
+        Route::get('{user}', [UserController::class, 'show']);
     });
 
     // Current authenticated user info
@@ -36,4 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
             'user' => $request->user()
         ]);
     });
+
+    // EMAILSERVICE TEST //
+
+    Route::post('/send-email', [EmailController::class, 'sendEmail']);
 });
